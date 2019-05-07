@@ -1,0 +1,3 @@
+accesos al WP:
+user: root
+pass: ypJy*tfV#CUSem(gLv

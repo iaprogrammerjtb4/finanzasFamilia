@@ -83,3 +83,38 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+//datos de conec
+if (strrpos($_SERVER['HTTP_HOST'], "localhost") > -1 or strrpos($_SERVER['HTTP_HOST'], "127.0.0.1") > -1) {
+    define('CONSOLA', 'local');
+    define('DBHOST', 'localhost');
+    define('URLHOME', 'localhost/finanzasFamilia');
+    define('DBNAME', 'finanzasfamiliasys');
+    define('DBUSUARIO', 'root');
+    define('DBPASS', '');
+    //error_reporting(0);
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
+} 
+elseif (strrpos(dirname(__FILE__), 'fidu-pre-stg/zp/') !== false) {
+    error_reporting(0);
+    define('CONSOLA', 'stage');
+    define('URLHOME', "http://167.86.84.161/davos-dev/");
+    define('DATABASESYS', 'davos-dev');
+    define('DBUSUARIO', 'dev-davos');
+    define('DBPASS', 'wZGBjqm46QBRwwTY');
+}
+elseif (strrpos(dirname(__FILE__), 'davos-dev/zp/') !== false) {
+    error_reporting(0);
+    define('CONSOLA', 'stage');
+    define('URLHOME', "http://167.86.84.161/davos-dev/");
+    define('DATABASESYS', 'fiduprevisora');
+    define('DBUSUARIO', 'usufidu');
+    define('DBPASS', 'XYwWEA4hjPEhZBAb');
+} else {
+    error_reporting(0);// Produccion
+    define('CONSOLA', 'prod');
+    define('URLHOME', 'http://167.86.84.161/davos-dev/');
+    define('DATABASESYS', 'davos-dev');
+    define('DBUSUARIO', 'dev-davos');
+    define('DBPASS', 'wZGBjqm46QBRwwTY');
+}

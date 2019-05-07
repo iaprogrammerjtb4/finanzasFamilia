@@ -1,8 +1,6 @@
 <?php
-$urlBase = 'http://preproduccionsitios3.xyz/dev13/sistema/';
+$urlBase = 'http://localhost/finanzasFamilia';
 $servicesLibs = array(
-	'login',
-	'areas',
-	'funcionarios'
-	
+	'familia',
+	'integrantes'
 );

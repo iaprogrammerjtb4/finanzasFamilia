@@ -1,10 +1,9 @@
 <?php
 
-//SECTOR INDUSTRIAL
 $services[] =array(
-		'nombre'=>'Login',
-		'url'=>'services/Login_serv/iniciarSesion_Serv',
-		'descripcion'=>'Iniciar sesión',
+		'nombre'=>'registrar familia',
+		'url'=>'services/familia/registrar_familia_Serv',
+		'descripcion'=>'Registrar o actualizar familias al sistema',
 		'color'=>'#00FFD4',
 		'campos'=>array(
 			array('nombre'=>'nombreUsuario','valor'=>'maleja13','info'=>''),

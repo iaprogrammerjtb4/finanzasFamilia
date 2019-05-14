@@ -1,0 +1,34 @@
+/*Colores*/
+.Verde{
+	background-color:#00F2BC;	
+}
+.Naranja{
+	background-color:#FF6200;
+}
+.Azul{
+	background-color:#428BF6;
+}
+.Amarillo{
+	background-color:#FFA100;
+}
+
+/*Home*/
+.iaprogrammerHome{
+	
+}
+
+/*form*/
+.iaprogrammerHomeForm{
+	border-radius: 10px;
+}
+//carrusel
+.carousel-inner img{
+  opacity: 0.5;
+  width: 50%;
+  height: 50%;
+}
+@media (max-width: 720px) {
+	.homeImagenes{
+		display: none;
+	}
+}

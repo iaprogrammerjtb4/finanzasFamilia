@@ -7,7 +7,12 @@ class Familia_serv extends CI_Controller{
 	}
 
 	public function registrar_familia_serv(){
-		$this->Familia_model->registrar_familia();
+		//$this->Familia_model->registrar_familia();
+		$nombre = $this->input->post('nombre');
+		$pais = $this->input->post('pais');
+		$ciudad = $this->input->post('ciudad');
+		$barrio = $this->input->post('barrio');
+		$bucle = $this->input->post('bucle');
 	}
 }
 ?>

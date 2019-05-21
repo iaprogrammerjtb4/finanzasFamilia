@@ -89,7 +89,7 @@ if (strrpos($_SERVER['HTTP_HOST'], "localhost") > -1 or strrpos($_SERVER['HTTP_H
     define('CONSOLA', 'local');
     define('DBHOST', 'localhost');
     define('URLHOME', 'localhost/finanzasFamilia');
-    define('DBNAME', 'finanzasfamiliasys');
+    define('DBNAME', 'finanzasfamilasys');
     define('DBUSUARIO', 'root');
     define('DBPASS', '');
     //error_reporting(0);

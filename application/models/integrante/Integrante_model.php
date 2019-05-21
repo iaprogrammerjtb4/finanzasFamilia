@@ -6,7 +6,7 @@ class Integrante_model  extends CI_Model{
 	public function __construct(){
 		parent::__construct();				
 	}
-	public function registrar_integrante($idintegrante = null, $idfamilia,$nombre, $acceso){	
+	public function registrar_integrante($idintegrante = null, $idfamilia,$nombre, $correo, $acceso){	
 		$value = false;
 	    $data = array();
 		if($idintegrante){
@@ -14,6 +14,7 @@ class Integrante_model  extends CI_Model{
 			$updatei= $this->db->update('sys_integrantes', array(
 	        	'inte_id_sys_familia' => $idfamilia, 
 	        	'inte_nombre' => $nombre,
+	        	'inte_correo' => $correo,
 	        	'inte_acceso' => $acceso 	        	
 	        ));
 	        if($updatei){
@@ -37,6 +38,7 @@ class Integrante_model  extends CI_Model{
 	        $this->db->insert('sys_integrantes', array(
 	        	'inte_id_sys_familia' => $idfamilia, 
 	        	'inte_nombre' => $nombre,
+	        	'inte_correo' => $correo,
 	        	'inte_acceso' => $acceso 	        	
 	        ));
 	        $idin = $this->db->insert_id();
@@ -53,6 +55,46 @@ class Integrante_model  extends CI_Model{
 	        	$msg = 'Por favor, inténtelo de nuevo, si el problema persiste, contáctenos.';
 	        }
 		}
+		return array($value, $data, $msg);
+	}
+
+	public function cambiar_estado_integrante($idintegrante, $estado){
+		$this->form_validation->set_rules('idintegrante', 'idintegrante', 'required');
+		$this->form_validation->set_rules('estado', 'estado', 'required');
+	    $this->form_validation->set_message('required', 'Debe completar el campo %s.');
+		$r = $this->form_validation->run();
+	    if (!$r) {
+	    	return array(false, array(), validation_errors());
+	    }
+	    $value = false;
+	    $data = array();
+	    switch ($estado) {
+	    	case 1:
+	    		$msg = 'Se puesto en estado activo';		
+	    	break;
+	    	
+	    	case 2:
+	    		$msg = 'Se puesto en estado inactivo';		
+	    	break;
+	    	default:
+	    		$msg = 'error en la consulta';
+	    	break;
+	    }
+	    	
+	    $cei = $this->db->update('sys_integrantes', array('inte_estado' => $estado));
+	    if($cei){
+	    	$value = true;
+	    }else{
+	    	$msg = 'Error al actualizar';
+	    }
+	    return array($value, $data, $msg);
+	}
+
+	public function listar_integrante_familia($idfamilia){
+		return array($value, $data, $msg);
+	}
+
+	public function listar_integrante($idintegrante){
 		return array($value, $data, $msg);
 	}
 }

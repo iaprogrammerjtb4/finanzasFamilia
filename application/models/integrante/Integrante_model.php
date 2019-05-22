@@ -91,11 +91,42 @@ class Integrante_model  extends CI_Model{
 	}
 
 	public function listar_integrante_familia($idfamilia){
+		$this->form_validation->set_rules('idfamilia', 'idfamilia', 'required');
+	    $this->form_validation->set_message('required', 'Debe completar el campo %s.');
+		$r = $this->form_validation->run();
+	    if (!$r) {
+	    	return array(false, array(), validation_errors());
+	    }
+	    $value = false;
+	    $data = array();
+	    $lif = $this->db->get_where('sys_integrantes', array('inte_id_sys_familia'=> $idfamilia))->result_array();
+	    if($lif){
+	    	$value = true;
+	    	$data = $lif;
+	    	$msg = 'Listado de integrantes';
+	    }else{
+	    	$msg = 'NO se encontraron integrantes';
+	    }
 		return array($value, $data, $msg);
 	}
 
 	public function listar_integrante($idintegrante){
-		return array($value, $data, $msg);
+		$this->form_validation->set_rules('idintegrante', 'idintegrante', 'required');
+	    $this->form_validation->set_message('required', 'Debe completar el campo %s.');
+		$r = $this->form_validation->run();
+	    if (!$r) {
+	    	return array(false, array(), validation_errors());
+	    }
+	    $value = false;
+	    $data = array();
+	    $li = $this->db->get_where('sys_integrantes', array('inte_id'=>$idintegrante))->result_array();
+	    if($li){
+	    	$value = true;
+	    	$data = $li;
+	    }else{
+	    	$msg = 'No se encontraron datos';
+	    }
+	 	return array($value, $data, $msg);   
 	}
 }
  ?>

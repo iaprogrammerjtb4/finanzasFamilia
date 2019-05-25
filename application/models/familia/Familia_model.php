@@ -121,5 +121,59 @@ class Familia_model  extends CI_Model{
 	    }
 	    return array($value, $data, $msg);
 	}
+
+	public function registrar_razones($nombre, $descripcion){
+		$this->form_validation->set_rules('nombre', 'nombre', 'required');
+		$this->form_validation->set_rules('descripcion', 'descripcion', 'required');
+        $this->form_validation->set_message('required', 'Debe completar el campo %s.');
+		$r = $this->form_validation->run();
+        if (!$r) {
+            return array(false, array(), validation_errors());
+        }
+        $value = false;
+        $data = array();
+        $rr = $this->db->insert('sys_razones', array(
+        	'raz_nombre'=> $nombre, 
+        	'raz_descripcion' => $descripcion
+        ));
+        if($rr){
+        	$value = true;
+        	$msg = 'Se ha agregado la razón con éxito';
+        }else{
+        	$msg ='No se agrego la razón';
+        }
+        return array($value, $data, $msg);
+	}
+
+	public function registrar_gastos_familia($idfamilia, $idrazon, $comentario, $cantidad, 	$constante, $idbucle){
+		$this->form_validation->set_rules('idfamilia', 'idfamilia', 'required');
+		$this->form_validation->set_rules('idrazon', 'idrazon', 'required');		
+		$this->form_validation->set_rules('cantidad', 'cantidad', 'required');
+        $this->form_validation->set_message('required', 'Debe completar el campo %s.');
+		$r = $this->form_validation->run();
+        if (!$r) {
+            return array(false, array(), validation_errors());
+        }
+        $value = false;
+        $data = array();
+        $this->db->set('gas_fecha_creacion','now()',false);
+        $rgf = $this->db->insert('sys_gastos', array(        	
+        	'gas_id_sys_familia' => $idfamilia, 
+        	'gas_id_sys_razones' => $idrazon, 
+        	'gas_comentario' => $comentario, 
+        	'gas_cantidad' => $cantidad, 
+        	'gas_constante' => $constante, 
+        	'gas_id_sys_bucle' => $idbucle
+        ));
+        if($rgf){
+        	$value = true;
+        	$data = $rgf;
+        	$msg = 'Gasto ingresado con exito';
+        }else{
+        	$msg = 'No se ingreseo el gasto';
+        }
+        return array($value, $data, $msg);
+	}
+
 }
  ?>

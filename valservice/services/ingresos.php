@@ -1,8 +1,8 @@
 <?php
 
 $services[] =array(
-		'nombre'=>'cambiar estado familia',
-		'url'=>'Familia_serv/cambiar_estado_familia_serv',
+		'nombre'=>'Registrar ingreso',
+		'url'=>'_serv/cambiar_estado_familia_serv',
 		'descripcion'=>'Registrar o actualizar familias al sistema',
 		'color'=>'#0F0F0F',
 		'campos'=>array(

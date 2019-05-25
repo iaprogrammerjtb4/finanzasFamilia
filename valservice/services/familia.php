@@ -45,3 +45,30 @@ $services[] =array(
 			array('nombre'=>'idbucle','valor'=>'2','info'=>'Bucle id'),					
 		)
 );
+
+$services[] =array(
+		'nombre'=>'Registrar razones',
+		'url'=>'Familia_serv/registrar_razones_serv',
+		'descripcion'=>'',
+		'color'=>'',
+		'campos'=>array(			
+			array('nombre'=>'nombre','valor'=>'1ra razon','info'=>''),
+			array('nombre'=>'descripcion','valor'=>'Descripcion de la 1ra razon','info'=>''),					
+		)
+);
+
+
+$services[] =array(
+		'nombre'=>'registrar gastos familia',
+		'url'=>'Familia_serv/registrar_gastos_familia_serv',
+		'descripcion'=>'',
+		'color'=>'#fff',
+		'campos'=>array(			
+			array('nombre'=>'idfamilia','valor'=>'2','info'=>'Para actulizar el bucle'),
+			array('nombre'=>'idrazon','valor'=>'1','info'=>''),
+			array('nombre'=>'comentario','valor'=>'Ahorro para comprar las tablas','info'=>'Para actulizar el bucle'),
+			array('nombre'=>'cantidad','valor'=>'40000','info'=>''),
+			array('nombre'=>'constante','valor'=>'','info'=>'1:gasto constante, 0:No es constante'),
+			array('nombre'=>'idbucle','valor'=>'1','info'=>'Cada cuanto se planilla este gasto'),					
+		)
+);

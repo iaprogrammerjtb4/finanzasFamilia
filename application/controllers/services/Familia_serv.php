@@ -39,6 +39,25 @@ class Familia_serv extends CI_Controller{
 		$abf = $this->Familia_model->actualizar_bucle_familia($idfamilia, $idbucle);
 		returnJson($abf[0], $abf[1], $abf[2]);
 	}
+
+	public function registrar_razones_serv(){		
+		$nombre = $this->input->post('nombre');
+		$descripcion = $this->input->post('descripcion');
+		$rr = $this->Familia_model->registrar_razones($nombre, $descripcion);
+		returnJson($rr[0], $rr[1], $rr[2]);
+	}
+
+	public function registrar_gastos_familia_serv(){
+		$idfamilia = $this->input->post('idfamilia');
+		$idrazon = $this->input->post('idrazon');
+		$comentario = $this->input->post('comentario');
+		$cantidad = $this->input->post('cantidad');
+		$constante = $this->input->post('constante');
+		$idbucle = $this->input->post('idbucle');
+		$rgf = $this->Familia_model->registrar_gastos_familia($idfamilia, $idrazon, $comentario, $cantidad, 	$constante, $idbucle);
+		returnJson($rgf[0], $rgf[1], $rgf[2]);
+	}
+
 }
 
 ?>

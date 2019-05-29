@@ -69,6 +69,6 @@ $services[] =array(
 			array('nombre'=>'comentario','valor'=>'Ahorro para comprar las tablas','info'=>'Para actulizar el bucle'),
 			array('nombre'=>'cantidad','valor'=>'40000','info'=>''),
 			array('nombre'=>'constante','valor'=>'','info'=>'1:gasto constante, 0:No es constante'),
-			array('nombre'=>'idbucle','valor'=>'1','info'=>'Cada cuanto se planilla este gasto'),					
+			array('nombre'=>'idbucle','valor'=>'1','info'=>'Cada cuanto se planilla este gasto')					
 		)
 );
